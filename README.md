@@ -17,4 +17,6 @@ Input should be entered in the following format:
   
   	line<delimiter>column
   
-Where <delimiter> can be replaced by ",", ":", ";", " " or "  "
+Where <delimiter> can be replaced by 
+	
+	",", ":", ";", " " or "  "
