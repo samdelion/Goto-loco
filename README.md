@@ -3,8 +3,8 @@ Goto-loco
 
 Sublime Text plugin to go to a specified line and column.
 
-Usage:
-
+Usage
+-----
 Edit your Preferences > Key Bindings - User file to include the following lines:
 
   	{ 
