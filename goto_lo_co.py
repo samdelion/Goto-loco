@@ -69,6 +69,7 @@ class GotoLoCoCommand(sublime_plugin.TextCommand):
 		pt = self.view.text_point(line, 0)
 		self.view.sel().clear()
 		self.view.sel().add(sublime.Region(pt))
+		self.view.show(pt)
 
 		colsMoved = 0
 		while colsMoved < col:
@@ -79,18 +80,18 @@ class GotoLoCoCommand(sublime_plugin.TextCommand):
 			if nextCol == '\n':
 				print("Reached end of line!")
 				break
-			if nextCol == '\t' and (col - colsMoved) < 4:
+			if nextCol == '\t' and (col - colsMoved) < tabSize:
 				print("Can't reach column! (column within hard tab)")
 				break 
 			
-			# Advance cursor
-			self.view.run_command("move", {"by": "characters", "forward": True})
-
 			# If we're going to advance across a tab, pretend we moved no. of cols in a tab
 			if nextCol == '\t':
 				colsMoved += tabSize
 			else:
 				colsMoved += 1
-			
+
+			# Advance cursor
+			self.view.run_command("move", {"by": "characters", "forward": True})
+
 			# Update our record of cursors position
 			pt = self.view.sel()[0].begin()
